@@ -1,0 +1,21 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+
+# Local tooling and secrets
+.env
+.env.*
+!.env.example
+*.log
+node_modules/
+dist/
+coverage/
+
+# Local QA artifacts
+playwright-report/
+test-results/
+screenshots/
+tmp/
