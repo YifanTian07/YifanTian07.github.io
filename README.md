@@ -2,6 +2,8 @@
 
 Source for [yifantian07.github.io](https://yifantian07.github.io), the personal academic and project portfolio of Yifan Tian.
 
+The site supports a complete English / Simplified Chinese switch, remembers the visitor's language preference, and adapts the typography for both languages.
+
 ## Sections
 
 - Personal profile and education

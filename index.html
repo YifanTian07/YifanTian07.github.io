@@ -31,7 +31,7 @@
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
   <header class="site-header" data-header>
     <a class="brand" href="#top" aria-label="Yifan Tian, back to top">
@@ -39,56 +39,59 @@
       <span class="brand-text">Yifan Tian</span>
     </a>
 
-    <nav class="desktop-nav" aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#work">Work</a>
-      <a href="#ventures">Ventures</a>
-      <a href="#blog">Blog</a>
+    <nav class="desktop-nav" aria-label="Primary navigation" data-i18n-aria-label="a11y.primaryNav">
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#research" data-i18n="nav.research">Research</a>
+      <a href="#work" data-i18n="nav.work">Work</a>
+      <a href="#ventures" data-i18n="nav.ventures">Ventures</a>
+      <a href="#blog" data-i18n="nav.blog">Blog</a>
     </nav>
 
     <div class="header-actions">
+      <button class="language-button" type="button" data-language-toggle aria-label="切换到中文" aria-pressed="false">
+        <span class="lang-option active" data-language-option="en">EN</span><i aria-hidden="true"></i><span class="lang-option" data-language-option="zh">中</span>
+      </button>
       <button class="icon-button" type="button" data-theme-toggle aria-label="Switch to dark theme">
         <svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"/></svg>
         <svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.5 8.5 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z"/></svg>
       </button>
-      <a class="contact-link" href="#contact">Let's talk</a>
+      <a class="contact-link" href="#contact" data-i18n="nav.talk">Let's talk</a>
       <button class="menu-button" type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu">
-        <span class="sr-only">Open navigation</span>
+        <span class="sr-only" data-i18n="a11y.openNav">Open navigation</span>
         <span></span><span></span>
       </button>
     </div>
 
-    <nav class="mobile-nav" id="mobile-menu" data-mobile-nav aria-label="Mobile navigation" hidden>
-      <a href="#about">About</a>
-      <a href="#research">Research</a>
-      <a href="#work">Projects</a>
-      <a href="#ventures">Ventures</a>
-      <a href="#blog">Blog</a>
-      <a href="#contact">Contact</a>
+    <nav class="mobile-nav" id="mobile-menu" data-mobile-nav aria-label="Mobile navigation" data-i18n-aria-label="a11y.mobileNav" hidden>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#research" data-i18n="nav.research">Research</a>
+      <a href="#work" data-i18n="nav.projects">Projects</a>
+      <a href="#ventures" data-i18n="nav.ventures">Ventures</a>
+      <a href="#blog" data-i18n="nav.blog">Blog</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero-copy reveal">
-        <p class="hero-meta"><span class="status-dot" aria-hidden="true"></span> HKUST(GZ) · 2025 Undergraduate</p>
-        <h1 id="hero-title">I build intelligence<br>that can <em>see</em>, <em>reason</em>,<br>and <em>act</em>.</h1>
-        <p class="hero-intro">I'm Yifan Tian, an undergraduate researcher studying robotics and autonomous systems with AI. My work sits at the intersection of embodied perception, manipulation, and computer vision.</p>
+        <p class="hero-meta"><span class="status-dot" aria-hidden="true"></span> <span data-i18n="hero.meta">HKUST(GZ) · 2025 Undergraduate</span></p>
+        <h1 id="hero-title" data-i18n="hero.title">I build intelligence<br>that can <em>see</em>, <em>reason</em>,<br>and <em>act</em>.</h1>
+        <p class="hero-intro" data-i18n="hero.intro">I'm Yifan Tian, an undergraduate researcher studying robotics and autonomous systems with AI. My work sits at the intersection of embodied perception, manipulation, and computer vision.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#research">Explore my research
+          <a class="button button-primary" href="#research"><span data-i18n="hero.researchCta">Explore my research</span>
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M11 6l4 4-4 4"/></svg>
           </a>
           <a class="text-link" href="https://github.com/YifanTian07" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
         </div>
       </div>
 
-      <div class="hero-visual reveal" aria-label="Abstract diagram connecting perception, reasoning, and action">
+      <div class="hero-visual reveal" aria-label="Abstract diagram connecting perception, reasoning, and action" data-i18n-aria-label="a11y.diagram">
         <div class="visual-frame">
-          <div class="frame-label frame-label-top">EMBODIED SYSTEM / 01</div>
+          <div class="frame-label frame-label-top" data-i18n="hero.diagram.label">EMBODIED SYSTEM / 01</div>
           <svg class="system-map" viewBox="0 0 620 620" role="img" aria-labelledby="map-title map-desc">
-            <title id="map-title">Embodied intelligence system map</title>
-            <desc id="map-desc">A dynamic network connecting perception, world models, and robot action.</desc>
+            <title id="map-title" data-i18n="a11y.diagramTitle">Embodied intelligence system map</title>
+            <desc id="map-desc" data-i18n="a11y.diagramDesc">A dynamic network connecting perception, world models, and robot action.</desc>
             <defs>
               <filter id="soft-glow"><feGaussianBlur stdDeviation="6" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
             </defs>
@@ -105,94 +108,94 @@
             </g>
             <g class="node node-perception" transform="translate(151 185)">
               <circle r="32"/><circle class="node-core" r="8"/>
-              <text x="-44" y="-47">PERCEPTION</text>
+              <text x="0" y="-47" data-i18n="hero.diagram.perception">PERCEPTION</text>
             </g>
             <g class="node node-reason" transform="translate(310 310)">
               <circle class="node-pulse" r="61"/><circle r="42"/><circle class="node-core" r="11"/>
-              <text x="-38" y="74">WORLD MODEL</text>
+              <text x="0" y="74" data-i18n="hero.diagram.worldModel">WORLD MODEL</text>
             </g>
             <g class="node node-memory" transform="translate(473 162)">
               <circle r="25"/><circle class="node-core" r="6"/>
-              <text x="-29" y="-39">MEMORY</text>
+              <text x="0" y="-39" data-i18n="hero.diagram.memory">MEMORY</text>
             </g>
             <g class="node node-action" transform="translate(493 424)">
               <circle r="34"/><circle class="node-core" r="8"/>
-              <text x="-23" y="53">ACTION</text>
+              <text x="0" y="53" data-i18n="hero.diagram.action">ACTION</text>
             </g>
             <g class="node node-space" transform="translate(132 438)">
               <circle r="24"/><circle class="node-core" r="6"/>
-              <text x="-28" y="43">3D SPACE</text>
+              <text x="0" y="43" data-i18n="hero.diagram.space">3D SPACE</text>
             </g>
             <g class="data-points">
               <circle cx="256" cy="88" r="4"/><circle cx="511" cy="305" r="4"/><circle cx="280" cy="529" r="4"/><circle cx="80" cy="305" r="4"/>
             </g>
           </svg>
-          <div class="frame-readout"><span>INPUT</span><strong>vision + geometry</strong><span>OUTPUT</span><strong>grounded action</strong></div>
+          <div class="frame-readout"><span data-i18n="hero.diagram.input">INPUT</span><strong data-i18n="hero.diagram.inputValue">vision + geometry</strong><span data-i18n="hero.diagram.output">OUTPUT</span><strong data-i18n="hero.diagram.outputValue">grounded action</strong></div>
         </div>
       </div>
 
-      <a class="scroll-cue" href="#about" aria-label="Scroll to about section"><span>Scroll to discover</span><i aria-hidden="true"></i></a>
+      <a class="scroll-cue" href="#about" aria-label="Scroll to about section" data-i18n-aria-label="a11y.scrollAbout"><span data-i18n="hero.scroll">Scroll to discover</span><i aria-hidden="true"></i></a>
     </section>
 
     <section class="about section" id="about" aria-labelledby="about-title">
-      <div class="section-index">01 / ABOUT</div>
+      <div class="section-index" data-i18n="section.about">01 / ABOUT</div>
       <div class="about-layout">
-        <h2 id="about-title" class="section-title reveal">Curiosity,<br>made concrete.</h2>
+        <h2 id="about-title" class="section-title reveal" data-i18n="about.title">Curiosity,<br>made concrete.</h2>
         <div class="about-copy reveal">
-          <p class="lead">I am a 2025-cohort undergraduate at <strong>HKUST(GZ)</strong>, studying Robotics and Autonomous Systems (ROAS) alongside Artificial Intelligence.</p>
-          <p>I care about the bridge between what an intelligent system perceives and what it can reliably do next. That means building representations of real environments, reasoning about uncertainty, and turning visual understanding into physical action.</p>
-          <p>Alongside research, I enjoy turning ambitious ideas into working systems—from robot policy training to multi-agent simulation tools.</p>
-          <div class="fact-row" aria-label="Quick facts">
-            <div><span>Based in</span><strong>Guangzhou, China</strong></div>
-            <div><span>Current focus</span><strong>Embodied intelligence</strong></div>
-            <div><span>Approach</span><strong>Research × building</strong></div>
+          <p class="lead" data-i18n="about.lead">I am a 2025-cohort undergraduate at <strong>HKUST(GZ)</strong>, studying Robotics and Autonomous Systems (ROAS) alongside Artificial Intelligence.</p>
+          <p data-i18n="about.body1">I care about the bridge between what an intelligent system perceives and what it can reliably do next. That means building representations of real environments, reasoning about uncertainty, and turning visual understanding into physical action.</p>
+          <p data-i18n="about.body2">Alongside research, I enjoy turning ambitious ideas into working systems—from robot policy training to multi-agent simulation tools.</p>
+          <div class="fact-row" aria-label="Quick facts" data-i18n-aria-label="a11y.quickFacts">
+            <div><span data-i18n="about.locationLabel">Based in</span><strong data-i18n="about.location">Guangzhou, China</strong></div>
+            <div><span data-i18n="about.focusLabel">Current focus</span><strong data-i18n="about.focus">Embodied intelligence</strong></div>
+            <div><span data-i18n="about.approachLabel">Approach</span><strong data-i18n="about.approach">Research × building</strong></div>
           </div>
         </div>
       </div>
     </section>
 
     <section class="research section section-dark" id="research" aria-labelledby="research-title">
-      <div class="section-index">02 / RESEARCH</div>
+      <div class="section-index" data-i18n="section.research">02 / RESEARCH</div>
       <div class="research-heading reveal">
-        <h2 id="research-title" class="section-title">Researching the loop<br>between <em>seeing</em> and <em>doing</em>.</h2>
-        <p>My interests converge on machines that understand spatial environments and use that understanding to make safe, effective decisions.</p>
+        <h2 id="research-title" class="section-title" data-i18n="research.title">Researching the loop<br>between <em>seeing</em> and <em>doing</em>.</h2>
+        <p data-i18n="research.intro">My interests converge on machines that understand spatial environments and use that understanding to make safe, effective decisions.</p>
       </div>
 
       <div class="interest-list">
         <article class="interest-item reveal">
           <span class="interest-number">01</span>
-          <div><h3>Embodied perception & manipulation</h3><p>3D scene understanding, structured spatial representations, and perception-to-action grounding for robots operating in the physical world.</p></div>
-          <span class="interest-tag">PRIMARY</span>
+          <div><h3 data-i18n="research.interest1.title">Embodied perception & manipulation</h3><p data-i18n="research.interest1.body">3D scene understanding, structured spatial representations, and perception-to-action grounding for robots operating in the physical world.</p></div>
+          <span class="interest-tag" data-i18n="research.interest1.tag">PRIMARY</span>
         </article>
         <article class="interest-item reveal">
           <span class="interest-number">02</span>
-          <div><h3>Computer vision</h3><p>Open-vocabulary recognition, multimodal visual reasoning, and robust representations that transfer beyond curated datasets.</p></div>
-          <span class="interest-tag">FOUNDATION</span>
+          <div><h3 data-i18n="research.interest2.title">Computer vision</h3><p data-i18n="research.interest2.body">Open-vocabulary recognition, multimodal visual reasoning, and robust representations that transfer beyond curated datasets.</p></div>
+          <span class="interest-tag" data-i18n="research.interest2.tag">FOUNDATION</span>
         </article>
         <article class="interest-item reveal">
           <span class="interest-number">03</span>
-          <div><h3>AI for healthcare</h3><p>Human-centered, evidence-aware AI systems that can support perception, analysis, and responsible clinical decision-making.</p></div>
-          <span class="interest-tag">EMERGING</span>
+          <div><h3 data-i18n="research.interest3.title">AI for healthcare</h3><p data-i18n="research.interest3.body">Human-centered, evidence-aware AI systems that can support perception, analysis, and responsible clinical decision-making.</p></div>
+          <span class="interest-tag" data-i18n="research.interest3.tag">EMERGING</span>
         </article>
       </div>
 
       <div class="experience-block reveal" aria-labelledby="experience-title">
         <div>
-          <p class="micro-label">RESEARCH EXPERIENCE</p>
-          <h3 id="experience-title">Undergraduate research & collaboration</h3>
+          <p class="micro-label" data-i18n="research.experience.label">RESEARCH EXPERIENCE</p>
+          <h3 id="experience-title" data-i18n="research.experience.title">Undergraduate research & collaboration</h3>
         </div>
         <div class="experience-detail">
-          <span>2025 — PRESENT</span>
-          <p>Exploring reliable 3D scene understanding for embodied agents, with current work spanning uncertainty-aware scene graphs, retrieval-augmented semantics, and robot manipulation.</p>
+          <span data-i18n="research.experience.date">2025 — PRESENT</span>
+          <p data-i18n="research.experience.body">Exploring reliable 3D scene understanding for embodied agents, with current work spanning uncertainty-aware scene graphs, retrieval-augmented semantics, and robot manipulation.</p>
         </div>
       </div>
     </section>
 
     <section class="publications section" id="publications" aria-labelledby="publications-title">
-      <div class="section-index">03 / PUBLICATIONS</div>
+      <div class="section-index" data-i18n="section.publications">03 / PUBLICATIONS</div>
       <div class="split-heading reveal">
-        <h2 id="publications-title" class="section-title">Selected papers.</h2>
-        <p>Early contributions to open, collaborative research in 3D perception and embodied intelligence.</p>
+        <h2 id="publications-title" class="section-title" data-i18n="publications.title">Selected papers.</h2>
+        <p data-i18n="publications.intro">Early contributions to open, collaborative research in 3D perception and embodied intelligence.</p>
       </div>
 
       <div class="publication-list">
@@ -201,7 +204,7 @@
           <div class="publication-main">
             <h3>RAG-3DSG: Enhancing 3D Scene Graphs with Re-Shot Guided Retrieval-Augmented Generation</h3>
             <p>Yue Chang, Rufeng Chen, Zhaofan Zhang, Yi Chen, <strong>Yifan Tian</strong>, Sihong Xie</p>
-            <div class="publication-meta"><span>arXiv:2601.10168</span><span>Computer Vision · Robotics · AI</span></div>
+            <div class="publication-meta"><span>arXiv:2601.10168</span><span data-i18n="publications.rag.fields">Computer Vision · Robotics · AI</span></div>
           </div>
           <a class="circle-link" href="https://arxiv.org/abs/2601.10168" target="_blank" rel="noreferrer" aria-label="Read RAG-3DSG on arXiv">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
@@ -212,8 +215,8 @@
           <div class="publication-year">2026</div>
           <div class="publication-main">
             <h3>JTOMA</h3>
-            <p>Preprint · <strong>Yifan Tian</strong> and collaborators</p>
-            <div class="publication-meta"><span>arXiv preprint</span><span>Publication link being updated</span></div>
+            <p data-i18n="publications.jtoma.authors">Preprint · <strong>Yifan Tian</strong> and collaborators</p>
+            <div class="publication-meta"><span data-i18n="publications.jtoma.type">arXiv preprint</span><span data-i18n="publications.jtoma.status">Publication link being updated</span></div>
           </div>
           <span class="circle-link circle-link-muted" aria-label="Publication link coming soon">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h8M12 8v8"/></svg>
@@ -223,89 +226,89 @@
     </section>
 
     <section class="work section" id="work" aria-labelledby="work-title">
-      <div class="section-index">04 / PROJECTS</div>
+      <div class="section-index" data-i18n="section.projects">04 / PROJECTS</div>
       <div class="split-heading reveal">
-        <h2 id="work-title" class="section-title">Selected work.</h2>
-        <p>Experiments in spatial intelligence, robot learning, and multi-agent systems—built to move ideas beyond the page.</p>
+        <h2 id="work-title" class="section-title" data-i18n="projects.title">Selected work.</h2>
+        <p data-i18n="projects.intro">Experiments in spatial intelligence, robot learning, and multi-agent systems—built to move ideas beyond the page.</p>
       </div>
 
       <div class="project-grid">
         <a class="project project-featured reveal" href="https://github.com/YifanTian07/SG-Agent" target="_blank" rel="noreferrer">
-          <div class="project-top"><span>EMBODIED AI · 3DSG</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></div>
+          <div class="project-top"><span data-i18n="projects.sg.tag">EMBODIED AI · 3DSG</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></div>
           <div class="project-graphic project-graphic-graph" aria-hidden="true">
-            <span class="graph-node graph-node-a">scene</span><span class="graph-node graph-node-b">object</span><span class="graph-node graph-node-c">relation</span><span class="graph-node graph-node-d">action</span>
+            <span class="graph-node graph-node-a" data-i18n="projects.sg.scene">scene</span><span class="graph-node graph-node-b" data-i18n="projects.sg.object">object</span><span class="graph-node graph-node-c" data-i18n="projects.sg.relation">relation</span><span class="graph-node graph-node-d" data-i18n="projects.sg.action">action</span>
             <i class="graph-line graph-line-a"></i><i class="graph-line graph-line-b"></i><i class="graph-line graph-line-c"></i>
           </div>
-          <div class="project-copy"><h3>SG-Agent</h3><p>A specialized agent exploring how structured 3D scene graphs can support grounded reasoning for embodied systems.</p></div>
+          <div class="project-copy"><h3>SG-Agent</h3><p data-i18n="projects.sg.body">A specialized agent exploring how structured 3D scene graphs can support grounded reasoning for embodied systems.</p></div>
         </a>
 
         <a class="project reveal" href="https://github.com/YifanTian07/G1-policy-train" target="_blank" rel="noreferrer">
-          <div class="project-top"><span>ROBOT LEARNING · POLICY</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></div>
+          <div class="project-top"><span data-i18n="projects.g1.tag">ROBOT LEARNING · POLICY</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></div>
           <div class="project-graphic project-graphic-policy" aria-hidden="true"><div class="policy-track"><i></i><i></i><i></i><i></i><i></i></div><div class="policy-agent">G1</div></div>
-          <div class="project-copy"><h3>G1 Policy Train</h3><p>Data-driven action-policy training experiments for the Unitree G1 humanoid platform.</p></div>
+          <div class="project-copy"><h3>G1 Policy Train</h3><p data-i18n="projects.g1.body">Data-driven action-policy training experiments for the Unitree G1 humanoid platform.</p></div>
         </a>
 
         <a class="project reveal" href="https://github.com/YifanTian07/GoldTo" target="_blank" rel="noreferrer">
-          <div class="project-top"><span>MULTI-AGENT · EXPLORATION</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></div>
+          <div class="project-top"><span data-i18n="projects.gold.tag">MULTI-AGENT · EXPLORATION</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></div>
           <div class="project-graphic project-graphic-swarm" aria-hidden="true"><div class="swarm-core"></div><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          <div class="project-copy"><h3>GoldTo <small>FORK</small></h3><p>Exploration of a multi-agent simulation engine combining GraphRAG, role-based agents, and scenario forecasting.</p></div>
+          <div class="project-copy"><h3>GoldTo <small data-i18n="projects.gold.fork">FORK</small></h3><p data-i18n="projects.gold.body">Exploration of a multi-agent simulation engine combining GraphRAG, role-based agents, and scenario forecasting.</p></div>
         </a>
       </div>
 
-      <a class="all-work-link reveal" href="https://github.com/YifanTian07?tab=repositories" target="_blank" rel="noreferrer"><span>View all repositories</span><span>github.com/YifanTian07</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"/></svg></a>
+      <a class="all-work-link reveal" href="https://github.com/YifanTian07?tab=repositories" target="_blank" rel="noreferrer"><span data-i18n="projects.all">View all repositories</span><span>github.com/YifanTian07</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5"/></svg></a>
     </section>
 
     <section class="ventures section" id="ventures" aria-labelledby="ventures-title">
-      <div class="section-index">05 / VENTURES</div>
+      <div class="section-index" data-i18n="section.ventures">05 / VENTURES</div>
       <div class="ventures-layout">
         <div class="ventures-heading reveal">
-          <h2 id="ventures-title" class="section-title">Ideas worth<br>building for.</h2>
-          <p>I'm interested in research-led ventures where technical depth can unlock practical, defensible products.</p>
+          <h2 id="ventures-title" class="section-title" data-i18n="ventures.title">Ideas worth<br>building for.</h2>
+          <p data-i18n="ventures.intro">I'm interested in research-led ventures where technical depth can unlock practical, defensible products.</p>
         </div>
         <div class="venture-list">
-          <article class="venture reveal"><span>01</span><div><h3>Physical AI systems</h3><p>Perception and decision infrastructure for robots working in unstructured, high-value environments.</p></div></article>
-          <article class="venture reveal"><span>02</span><div><h3>AI-native scientific tools</h3><p>Systems that make complex visual evidence, simulation, and research workflows more legible and useful.</p></div></article>
-          <article class="venture reveal"><span>03</span><div><h3>Responsible healthcare AI</h3><p>Assistive products that keep clinical context, safety, and human oversight at the center of deployment.</p></div></article>
+          <article class="venture reveal"><span>01</span><div><h3 data-i18n="ventures.item1.title">Physical AI systems</h3><p data-i18n="ventures.item1.body">Perception and decision infrastructure for robots working in unstructured, high-value environments.</p></div></article>
+          <article class="venture reveal"><span>02</span><div><h3 data-i18n="ventures.item2.title">AI-native scientific tools</h3><p data-i18n="ventures.item2.body">Systems that make complex visual evidence, simulation, and research workflows more legible and useful.</p></div></article>
+          <article class="venture reveal"><span>03</span><div><h3 data-i18n="ventures.item3.title">Responsible healthcare AI</h3><p data-i18n="ventures.item3.body">Assistive products that keep clinical context, safety, and human oversight at the center of deployment.</p></div></article>
         </div>
       </div>
     </section>
 
     <section class="blog section" id="blog" aria-labelledby="blog-title">
-      <div class="section-index">06 / BLOG</div>
+      <div class="section-index" data-i18n="section.blog">06 / BLOG</div>
       <div class="blog-header reveal">
-        <div><h2 id="blog-title" class="section-title">Field notes.</h2><p>Writing in progress—on embodied perception, research practice, and building systems that leave the lab.</p></div>
-        <span class="blog-status"><i aria-hidden="true"></i> First posts coming soon</span>
+        <div><h2 id="blog-title" class="section-title" data-i18n="blog.title">Field notes.</h2><p data-i18n="blog.intro">Writing in progress—on embodied perception, research practice, and building systems that leave the lab.</p></div>
+        <span class="blog-status"><i aria-hidden="true"></i> <span data-i18n="blog.status">First posts coming soon</span></span>
       </div>
-      <div class="note-topics reveal" aria-label="Upcoming blog topics">
-        <span>3D scene graphs</span><span>Embodied world models</span><span>Robot manipulation</span><span>Research notes</span><span>AI × healthcare</span>
+      <div class="note-topics reveal" aria-label="Upcoming blog topics" data-i18n-aria-label="a11y.blogTopics">
+        <span data-i18n="blog.topic1">3D scene graphs</span><span data-i18n="blog.topic2">Embodied world models</span><span data-i18n="blog.topic3">Robot manipulation</span><span data-i18n="blog.topic4">Research notes</span><span data-i18n="blog.topic5">AI × healthcare</span>
       </div>
       <div class="empty-note reveal">
-        <p>01</p><h3>The notebook is open.</h3><span>Essays, reading notes, and project breakdowns will live here.</span>
+        <p>01</p><h3 data-i18n="blog.emptyTitle">The notebook is open.</h3><span data-i18n="blog.emptyBody">Essays, reading notes, and project breakdowns will live here.</span>
       </div>
     </section>
 
     <section class="contact section" id="contact" aria-labelledby="contact-title">
       <div class="contact-intro reveal">
-        <div class="section-index">07 / CONTACT</div>
-        <h2 id="contact-title">Have a difficult idea?<br><em>Let's make it real.</em></h2>
-        <p>I'm open to research conversations, technical collaborations, and ambitious early-stage projects across embodied AI, computer vision, and healthcare.</p>
+        <div class="section-index" data-i18n="section.contact">07 / CONTACT</div>
+        <h2 id="contact-title" data-i18n="contact.title">Have a difficult idea?<br><em>Let's make it real.</em></h2>
+        <p data-i18n="contact.intro">I'm open to research conversations, technical collaborations, and ambitious early-stage projects across embodied AI, computer vision, and healthcare.</p>
       </div>
       <div class="contact-details reveal">
-        <a href="mailto:ytian515@connect.hkust-gz.edu.cn"><span>Email</span><strong>ytian515@connect.hkust-gz.edu.cn</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-        <a href="tel:+8618401250620"><span>Phone</span><strong>+86 184 0125 0620</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <a href="mailto:ytian515@connect.hkust-gz.edu.cn"><span data-i18n="contact.email">Email</span><strong>ytian515@connect.hkust-gz.edu.cn</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        <a href="tel:+8618401250620"><span data-i18n="contact.phone">Phone</span><strong>+86 184 0125 0620</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         <a href="https://github.com/YifanTian07" target="_blank" rel="noreferrer"><span>GitHub</span><strong>@YifanTian07</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
-        <button type="button" class="copy-email" data-copy-email><span>Quick action</span><strong data-copy-label>Copy email address</strong><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="10" height="10" rx="1"/><path d="M6 15H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v1"/></svg></button>
+        <button type="button" class="copy-email" data-copy-email><span data-i18n="contact.quick">Quick action</span><strong data-copy-label data-i18n="contact.copy">Copy email address</strong><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="10" height="10" rx="1"/><path d="M6 15H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v1"/></svg></button>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">YT</span><span class="brand-text">Yifan Tian</span></a>
-    <p>Researching intelligence that acts in the world.</p>
-    <div><span>© <span data-year></span> Yifan Tian</span><a href="#top">Back to top ↑</a></div>
+    <p data-i18n="footer.tagline">Researching intelligence that acts in the world.</p>
+    <div><span>© <span data-year></span> Yifan Tian</span><a href="#top" data-i18n="footer.top">Back to top ↑</a></div>
   </footer>
 
-  <div class="toast" data-toast role="status" aria-live="polite">Email copied to clipboard</div>
+  <div class="toast" data-toast role="status" aria-live="polite" data-i18n="contact.toast">Email copied to clipboard</div>
   <script src="script.js" defer></script>
 </body>
 </html>
