@@ -87,8 +87,14 @@ const translations = {
     'publications.title': 'Selected papers.',
     'publications.intro': 'Early contributions to open, collaborative research in 3D perception and embodied intelligence.',
     'publications.rag.fields': 'Computer Vision · Robotics · AI',
+    'publications.rag.figureAlt': 'Overview of the RAG-3DSG framework: re-shot guided uncertainty estimation and object-level retrieval-augmented scene graph generation.',
+    'publications.rag.figureLink': 'Open the RAG-3DSG framework figure at full size',
+    'publications.rag.figureCaption': 'Framework overview · open full size',
     'publications.jitoma.authors': 'Yue Chang, Rufeng Chen, <strong>Yifan Tian</strong>, Dazhi Huang, Zhaofan Zhang, Yi Chen, Wenze Zhang, Li Chen, Hui Xiong, Sihong Xie',
     'publications.jitoma.fields': 'Robotics · 3D Scene Graphs · Long-Horizon Reasoning',
+    'publications.jitoma.figureAlt': 'Overview of the JITOMA framework: task-aware perception and on-demand memory activation for just-in-time scene graph growth.',
+    'publications.jitoma.figureLink': 'Open the JITOMA framework figure at full size',
+    'publications.jitoma.figureCaption': 'Framework overview · open full size',
     'projects.title': 'Selected work.',
     'projects.intro': 'Experiments in spatial intelligence, robot learning, and multi-agent systems—built to move ideas beyond the page.',
     'projects.sg.tag': 'EMBODIED AI · 3DSG',
@@ -211,8 +217,14 @@ const translations = {
     'publications.title': '代表论文。',
     'publications.intro': '在三维感知与具身智能方向参与开放、协作式研究。',
     'publications.rag.fields': '计算机视觉 · 机器人 · 人工智能',
+    'publications.rag.figureAlt': 'RAG-3DSG 框架主图：重拍引导的不确定性估计与物体级检索增强场景图生成。',
+    'publications.rag.figureLink': '查看 RAG-3DSG 框架高清大图',
+    'publications.rag.figureCaption': '框架主图 · 点击查看大图',
     'publications.jitoma.authors': 'Yue Chang, Rufeng Chen, <strong>Yifan Tian</strong>, Dazhi Huang, Zhaofan Zhang, Yi Chen, Wenze Zhang, Li Chen, Hui Xiong, Sihong Xie',
     'publications.jitoma.fields': '机器人 · 三维场景图 · 长时程推理',
+    'publications.jitoma.figureAlt': 'JITOMA 框架主图：面向即时场景图生长的任务感知与按需记忆激活。',
+    'publications.jitoma.figureLink': '查看 JITOMA 框架高清大图',
+    'publications.jitoma.figureCaption': '框架主图 · 点击查看大图',
     'projects.title': '代表项目。',
     'projects.intro': '围绕空间智能、机器人学习与多智能体系统展开实验，让想法不止停留在纸面。',
     'projects.sg.tag': '具身智能 · 3DSG',
@@ -289,6 +301,10 @@ const applyLanguage = (language, persist = true) => {
   document.querySelectorAll('[data-i18n-aria-label]').forEach((element) => {
     const value = translations[currentLanguage][element.dataset.i18nAriaLabel];
     if (value) element.setAttribute('aria-label', value);
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach((element) => {
+    const value = translations[currentLanguage][element.dataset.i18nAlt];
+    if (value) element.setAttribute('alt', value);
   });
 
   languageToggle.querySelectorAll('[data-language-option]').forEach((option) => {
