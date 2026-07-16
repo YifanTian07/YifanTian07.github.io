@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Personal homepage style preview for Yifan Tian.">
+  <title>Style Preview — Yifan Tian</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="lab.css">
+  <script src="lab.js" defer></script>
+</head>
+<body class="preview-page" data-style="1">
+  <header class="preview-toolbar">
+    <a class="toolbar-back" href="index.html"><span>←</span><span data-en="All 10 styles" data-zh="全部 10 套">All 10 styles</span></a>
+    <p><span data-style-number>01</span> / <strong data-style-name>Kinetic Paper</strong></p>
+    <div>
+      <button class="lab-language" type="button" data-language-toggle aria-label="Switch language"><span>EN</span><i></i><span>中</span></button>
+      <a data-prev-style href="preview.html?style=10" aria-label="Previous style">←</a>
+      <a data-next-style href="preview.html?style=2" aria-label="Next style">→</a>
+    </div>
+  </header>
+
+  <main class="portfolio-shell">
+    <nav class="portfolio-nav" aria-label="Portfolio navigation">
+      <a class="portfolio-mark" href="#top">YT</a>
+      <div><a href="#research" data-en="Research" data-zh="科研">Research</a><a href="#papers" data-en="Papers" data-zh="论文">Papers</a><a href="#projects" data-en="Projects" data-zh="项目">Projects</a></div>
+      <a class="nav-contact" href="mailto:ytian515@connect.hkust-gz.edu.cn" data-en="Let's talk" data-zh="联系我">Let's talk</a>
+    </nav>
+
+    <section class="portfolio-hero" id="top">
+      <div class="hero-copy">
+        <h1>Yifan Tian</h1>
+        <p class="hero-statement" data-en="I build perception into action." data-zh="让感知，真正成为行动。">I build perception into action.</p>
+        <p class="hero-summary" data-en="First-year ROAS + AI undergraduate at HKUST(GZ), exploring embodied perception, robot manipulation, computer vision, and responsible healthcare AI." data-zh="香港科技大学（广州）ROAS + AI 大一学生，探索具身感知、机器人操作、计算机视觉与负责任的医疗 AI。">First-year ROAS + AI undergraduate at HKUST(GZ), exploring embodied perception, robot manipulation, computer vision, and responsible healthcare AI.</p>
+        <div class="hero-links"><a href="#papers" data-en="View research" data-zh="查看科研">View research</a><a href="https://github.com/YifanTian07" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+        <div class="hero-meta"><span>HKUST(GZ)</span><span>25 UG</span><span>ROAS + AI</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-board">
+          <strong>YT</strong><span class="art-word word-one">PERCEPTION</span><span class="art-word word-two">ACTION</span><span class="art-word word-three">AI</span>
+          <i class="art-line line-one"></i><i class="art-line line-two"></i><i class="art-dot dot-one"></i><i class="art-dot dot-two"></i><i class="art-dot dot-three"></i>
+        </div>
+      </div>
+    </section>
+
+    <section class="portfolio-section research-section" id="research">
+      <div class="section-heading"><span>01</span><h2 data-en="Research that connects pixels, geometry, and physical action." data-zh="连接像素、几何与真实行动的研究。">Research that connects pixels, geometry, and physical action.</h2></div>
+      <div class="interest-list">
+        <article><span>01</span><h3 data-en="Embodied perception" data-zh="具身感知">Embodied perception</h3><p data-en="Structured 3D understanding that stays useful under uncertainty and changing tasks." data-zh="在不确定性与任务变化中仍然可靠、可用的结构化三维理解。">Structured 3D understanding that stays useful under uncertainty and changing tasks.</p></article>
+        <article><span>02</span><h3 data-en="Robot manipulation" data-zh="机器人操作">Robot manipulation</h3><p data-en="Turning scene understanding into grounded, efficient action in the physical world." data-zh="把场景理解转化为物理世界中可靠、高效的行动。">Turning scene understanding into grounded, efficient action in the physical world.</p></article>
+        <article><span>03</span><h3 data-en="AI for healthcare" data-zh="医疗人工智能">AI for healthcare</h3><p data-en="Evidence-aware systems designed around safety, context, and human oversight." data-zh="围绕安全、语境与人类监督设计的证据感知系统。">Evidence-aware systems designed around safety, context, and human oversight.</p></article>
+      </div>
+    </section>
+
+    <section class="portfolio-section papers-section" id="papers">
+      <div class="section-heading"><span>02</span><h2 data-en="Two early papers. One direction: useful spatial intelligence." data-zh="两篇早期论文，一个方向：真正有用的空间智能。">Two early papers. One direction: useful spatial intelligence.</h2></div>
+      <div class="paper-list">
+        <a class="paper paper-rag" href="https://arxiv.org/abs/2601.10168" target="_blank" rel="noreferrer">
+          <div class="paper-visual"><img src="../assets/papers/rag-3dsg-overview.webp" width="1475" height="1075" loading="lazy" alt="RAG-3DSG framework overview"></div>
+          <div class="paper-copy"><span>arXiv:2601.10168</span><h3>RAG-3DSG</h3><p data-en="Re-shot guided retrieval-augmented generation for reliable 3D scene graphs." data-zh="面向可靠三维场景图的重拍引导检索增强生成。">Re-shot guided retrieval-augmented generation for reliable 3D scene graphs.</p><strong>↗</strong></div>
+        </a>
+        <a class="paper paper-jitoma" href="https://arxiv.org/abs/2607.13245" target="_blank" rel="noreferrer">
+          <div class="paper-visual"><img src="../assets/papers/jitoma-overview.webp" width="1690" height="1030" loading="lazy" alt="JITOMA framework overview"></div>
+          <div class="paper-copy"><span>arXiv:2607.13245</span><h3>JITOMA</h3><p data-en="Just-in-time scene graph growth for long-horizon embodied reasoning." data-zh="面向长时程具身推理的即时场景图生长。">Just-in-time scene graph growth for long-horizon embodied reasoning.</p><strong>↗</strong></div>
+        </a>
+      </div>
+    </section>
+
+    <section class="portfolio-section projects-section" id="projects">
+      <div class="section-heading"><span>03</span><h2 data-en="Built beyond the paper." data-zh="让想法不止停留在纸面。">Built beyond the paper.</h2></div>
+      <div class="project-list">
+        <a href="https://github.com/YifanTian07/SG-Agent" target="_blank" rel="noreferrer"><span>01</span><div><h3>SG-Agent</h3><p data-en="3D scene graphs for grounded embodied reasoning." data-zh="用三维场景图支持具身系统的可靠推理。">3D scene graphs for grounded embodied reasoning.</p></div><strong>↗</strong></a>
+        <article><span>02</span><div><h3>GKGuard</h3><p data-en="A ROS 2 four-wheel robot with dual hoverboard motor control." data-zh="整合双悬浮车电机控制器的 ROS 2 四轮机器人。">A ROS 2 four-wheel robot with dual hoverboard motor control.</p></div><strong data-en="BUILDING" data-zh="开发中">BUILDING</strong></article>
+        <a href="https://github.com/YifanTian07/G1-policy-train" target="_blank" rel="noreferrer"><span>03</span><div><h3>G1 Policy Train</h3><p data-en="Action-policy training for the Unitree G1 platform." data-zh="面向 Unitree G1 平台的动作策略训练。">Action-policy training for the Unitree G1 platform.</p></div><strong>↗</strong></a>
+      </div>
+    </section>
+
+    <section class="portfolio-contact">
+      <p data-en="Have an ambitious robot, research question, or early-stage idea?" data-zh="有大胆的机器人项目、科研问题或早期想法？">Have an ambitious robot, research question, or early-stage idea?</p>
+      <a href="mailto:ytian515@connect.hkust-gz.edu.cn" data-en="Let's build something real." data-zh="一起做点真正有价值的东西。">Let's build something real.</a>
+      <div><span>ytian515@connect.hkust-gz.edu.cn</span><span>Guangzhou · China</span></div>
+    </section>
+  </main>
+
+  <footer class="preview-footer"><span data-style-number>01</span><strong data-style-name>Kinetic Paper</strong><a href="index.html" data-en="Choose another style" data-zh="选择其他风格">Choose another style</a></footer>
+</body>
+</html>
