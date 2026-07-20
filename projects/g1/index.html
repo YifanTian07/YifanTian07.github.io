@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="An end-to-end Unitree G1 humanoid learning system by Yifan Tian: dual teleoperation, LeRobot data, pi0.5 training, Isaac Sim validation, and real-world deployment.">
+  <meta name="author" content="Yifan Tian">
+  <meta name="theme-color" content="#171914">
+  <meta property="og:title" content="Unitree G1 Humanoid Learning System — Yifan Tian">
+  <meta property="og:description" content="From dual teleoperation and LeRobot data to pi0.5 policy training, simulation, and real-robot validation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yifantian07.github.io/projects/g1/">
+  <title>Unitree G1 Humanoid Learning System — Yifan Tian</title>
+  <link rel="canonical" href="https://yifantian07.github.io/projects/g1/">
+  <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="project.css">
+  <script src="media-manifest.js" defer></script>
+  <script src="project.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-en="Skip to content" data-zh="跳到主要内容">Skip to content</a>
+
+  <header class="project-header">
+    <a class="back-link" href="../../index.html#work" aria-label="Back to Yifan Tian's homepage">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+      <span data-en="Yifan Tian / Projects" data-zh="Yifan Tian / 项目">Yifan Tian / Projects</span>
+    </a>
+    <nav aria-label="Project navigation">
+      <a href="#motivation" data-en="Motivation" data-zh="动机">Motivation</a>
+      <a href="#system" data-en="System" data-zh="系统">System</a>
+      <a href="#teleoperation" data-en="Teleoperation" data-zh="遥操作">Teleoperation</a>
+      <a href="#learning" data-en="Learning" data-zh="学习">Learning</a>
+      <a href="#validation" data-en="Validation" data-zh="验证">Validation</a>
+    </nav>
+    <div class="header-actions">
+      <button class="language-toggle" type="button" data-language-toggle aria-label="切换到中文"><span>EN</span><i></i><span>中</span></button>
+      <a class="repo-link" href="https://github.com/YifanTian07/G1-policy-train" target="_blank" rel="noreferrer">GitHub <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="project-hero">
+      <div class="hero-copy">
+        <h1><span>Unitree G1</span><strong data-en="From human motion to a deployed humanoid policy." data-zh="从人的动作，到部署在人形机器人上的策略。">From human motion to a deployed humanoid policy.</strong></h1>
+        <p class="hero-summary" data-en="An end-to-end humanoid learning system built since February 2026: two teleoperation systems, standardized LeRobot data, imitation-learning-based π0.5 training, Isaac Sim verification, and closed-loop deployment on a physical G1." data-zh="自 2026 年 2 月持续构建的端到端人形机器人学习系统：两套遥操作、标准化 LeRobot 数据、基于模仿学习的 π0.5 训练、Isaac Sim 验证，以及在实体 G1 上的闭环部署。">An end-to-end humanoid learning system built since February 2026: two teleoperation systems, standardized LeRobot data, imitation-learning-based π0.5 training, Isaac Sim verification, and closed-loop deployment on a physical G1.</p>
+        <div class="hero-meta"><span>2026.02 — PRESENT</span><span>UNITREE G1</span><span>IMITATION LEARNING</span></div>
+      </div>
+
+      <figure class="media-slot media-slot-hero" data-media-key="hero">
+        <div class="media-placeholder">
+          <div><span>MEDIA 00</span><strong data-en="Project overview film or system montage" data-zh="项目总览视频或系统合成图">Project overview film or system montage</strong></div>
+          <p><code>media/g1-overview.mp4</code><span>16:9 · VIDEO / IMAGE</span></p>
+        </div>
+        <figcaption data-en="Optional hero media: a short overview of teleoperation, simulation, and deployment." data-zh="可选首屏素材：用短视频串联遥操作、仿真与真机部署。">Optional hero media: a short overview of teleoperation, simulation, and deployment.</figcaption>
+      </figure>
+
+      <div class="data-strip" aria-label="Public dataset snapshot">
+        <div><strong>2</strong><span data-en="teleoperation systems" data-zh="套遥操作系统">teleoperation systems</span></div>
+        <div><strong>100</strong><span data-en="public episodes" data-zh="个公开 episode">public episodes</span></div>
+        <div><strong>35,965</strong><span data-en="recorded frames" data-zh="帧公开数据">recorded frames</span></div>
+        <div><strong>30 FPS</strong><span data-en="synchronized data" data-zh="同步数据频率">synchronized data</span></div>
+        <div><strong>26-D</strong><span data-en="state and action" data-zh="状态与动作维度">state and action</span></div>
+      </div>
+    </section>
+
+    <section class="project-section motivation" id="motivation">
+      <div class="section-number">01 / MOTIVATION</div>
+      <div class="section-intro">
+        <h2 data-en="Humanoid learning needs more than a policy checkpoint." data-zh="人形机器人学习，不只是得到一个策略权重。">Humanoid learning needs more than a policy checkpoint.</h2>
+        <p data-en="A useful humanoid manipulation system must connect how a person demonstrates a task, how robot trajectories are represented, how a policy is trained, and how failure is contained before hardware execution. This project treats those parts as one engineering loop." data-zh="一个真正可用的人形机器人操作系统，需要把人的示范方式、机器人轨迹的表达、策略训练，以及真机执行前的风险控制连接起来。本项目把这些部分视为同一条工程闭环。">A useful humanoid manipulation system must connect how a person demonstrates a task, how robot trajectories are represented, how a policy is trained, and how failure is contained before hardware execution. This project treats those parts as one engineering loop.</p>
+      </div>
+      <div class="motivation-grid">
+        <article><span>HUMAN INPUT</span><h3 data-en="Two ways to demonstrate" data-zh="两种示范方式">Two ways to demonstrate</h3><p data-en="Upper-body manipulation benefits from precise XR control, while full-body behavior requires coordinated whole-body motion." data-zh="上肢操作需要精细的 XR 控制，而全身行为要求全身运动的协调映射。">Upper-body manipulation benefits from precise XR control, while full-body behavior requires coordinated whole-body motion.</p></article>
+        <article><span>DATA ENGINE</span><h3 data-en="One learnable representation" data-zh="统一的可学习表示">One learnable representation</h3><p data-en="Heterogeneous demonstrations must become synchronized, inspectable LeRobot datasets before they can support repeatable training." data-zh="异构示范必须先转换成同步、可检查的 LeRobot 数据集，才能支持可复现训练。">Heterogeneous demonstrations must become synchronized, inspectable LeRobot datasets before they can support repeatable training.</p></article>
+        <article><span>SAFE ITERATION</span><h3 data-en="Simulation before hardware" data-zh="先仿真，再上真机">Simulation before hardware</h3><p data-en="Policy behavior is checked in simulation before commands are allowed to reach the physical G1." data-zh="策略行为先在仿真中检查，再允许控制指令进入实体 G1。">Policy behavior is checked in simulation before commands are allowed to reach the physical G1.</p></article>
+      </div>
+    </section>
+
+    <section class="project-section system-section" id="system">
+      <div class="section-number">02 / SYSTEM MAP</div>
+      <div class="section-intro section-intro-wide">
+        <h2 data-en="One pipeline, two demonstration interfaces." data-zh="一条闭环，两种示范入口。">One pipeline, two demonstration interfaces.</h2>
+        <p data-en="Both teleoperation systems feed the same data and learning backbone. The pipeline is designed so each stage can be inspected independently before progressing to the next risk boundary." data-zh="两套遥操作最终进入同一套数据与学习主干。每个阶段都可以独立检查，再跨越下一层风险边界。">Both teleoperation systems feed the same data and learning backbone. The pipeline is designed so each stage can be inspected independently before progressing to the next risk boundary.</p>
+      </div>
+
+      <div class="pipeline" aria-label="End-to-end project pipeline">
+        <div class="pipeline-inputs">
+          <article><span>01A</span><strong data-en="Upper-body teleoperation" data-zh="上肢遥操作">Upper-body teleoperation</strong><small>APPLE VISION PRO</small></article>
+          <article><span>01B</span><strong data-en="Whole-body teleoperation" data-zh="全身遥操作">Whole-body teleoperation</strong><small>TWIST2 REPRODUCTION</small></article>
+        </div>
+        <svg class="pipeline-arrow" viewBox="0 0 80 60" aria-hidden="true"><path d="M4 12h24c12 0 12 18 24 18h22M4 48h24c12 0 12-18 24-18"/><path d="m67 24 8 6-8 6"/></svg>
+        <article class="pipeline-stage"><span>02</span><strong data-en="Data collection" data-zh="数据采集">Data collection</strong><small>RGB + STATE + ACTION</small></article>
+        <svg class="pipeline-arrow simple" viewBox="0 0 80 60" aria-hidden="true"><path d="M4 30h70"/><path d="m67 24 8 6-8 6"/></svg>
+        <article class="pipeline-stage"><span>03</span><strong data-en="LeRobot conversion" data-zh="LeRobot 转换">LeRobot conversion</strong><small>PARQUET + MP4 + META</small></article>
+        <svg class="pipeline-arrow simple" viewBox="0 0 80 60" aria-hidden="true"><path d="M4 30h70"/><path d="m67 24 8 6-8 6"/></svg>
+        <article class="pipeline-stage pipeline-stage-accent"><span>04</span><strong>π0.5</strong><small>IMITATION LEARNING</small></article>
+        <svg class="pipeline-arrow simple" viewBox="0 0 80 60" aria-hidden="true"><path d="M4 30h70"/><path d="m67 24 8 6-8 6"/></svg>
+        <article class="pipeline-stage"><span>05</span><strong data-en="Isaac Sim" data-zh="Isaac Sim 仿真">Isaac Sim</strong><small>SIM VALIDATION</small></article>
+        <svg class="pipeline-arrow simple" viewBox="0 0 80 60" aria-hidden="true"><path d="M4 30h70"/><path d="m67 24 8 6-8 6"/></svg>
+        <article class="pipeline-stage pipeline-stage-final"><span>06</span><strong data-en="Physical G1" data-zh="实体 G1">Physical G1</strong><small>REAL-WORLD TEST</small></article>
+      </div>
+    </section>
+
+    <section class="project-section teleoperation" id="teleoperation">
+      <div class="section-number">03 / TELEOPERATION</div>
+      <div class="section-intro">
+        <h2 data-en="Capture intent at the right level of embodiment." data-zh="在正确的具身层级捕捉人的意图。">Capture intent at the right level of embodiment.</h2>
+        <p data-en="The project uses two complementary systems rather than forcing every demonstration through one controller." data-zh="项目采用两套互补系统，而不是把所有示范强行塞进同一种控制方式。">The project uses two complementary systems rather than forcing every demonstration through one controller.</p>
+      </div>
+
+      <div class="teleop-grid">
+        <article class="teleop-card">
+          <div class="teleop-copy"><span>SYSTEM A / UPPER BODY</span><h3 data-en="Apple Vision Pro teleoperation" data-zh="Apple Vision Pro 上肢遥操作">Apple Vision Pro teleoperation</h3><p data-en="An XR-based interface for commanding the G1 upper body and Inspire hands, designed for close-range bimanual manipulation and precise human demonstrations." data-zh="使用 XR 接口控制 G1 上肢与 Inspire 灵巧手，面向近距离双臂操作和精细的人类示范。">An XR-based interface for commanding the G1 upper body and Inspire hands, designed for close-range bimanual manipulation and precise human demonstrations.</p><ul><li data-en="Upper-body and hand commands" data-zh="上肢与手部指令">Upper-body and hand commands</li><li data-en="First-person visual feedback" data-zh="第一视角视觉反馈">First-person visual feedback</li><li data-en="Manipulation-focused demonstrations" data-zh="面向操作的数据示范">Manipulation-focused demonstrations</li></ul></div>
+          <figure class="media-slot" data-media-key="teleopUpper">
+            <div class="media-placeholder"><div><span>PHOTO 01</span><strong data-en="Upper-body teleoperation setup" data-zh="上肢遥操作系统照片">Upper-body teleoperation setup</strong></div><p><code>media/teleop-upper.webp</code><span>4:3 / 16:9 · PHOTO</span></p></div>
+            <figcaption data-en="Recommended: operator wearing Apple Vision Pro with the G1 visible in the same frame." data-zh="建议素材：操作员佩戴 Apple Vision Pro，并让 G1 同时出现在画面中。">Recommended: operator wearing Apple Vision Pro with the G1 visible in the same frame.</figcaption>
+          </figure>
+        </article>
+
+        <article class="teleop-card">
+          <div class="teleop-copy"><span>SYSTEM B / WHOLE BODY</span><h3 data-en="Whole-body TWIST2 reproduction" data-zh="全身 TWIST2 复现系统">Whole-body TWIST2 reproduction</h3><p data-en="A full-system reproduction of the TWIST2 pipeline for mapping coordinated human motion to the complete G1 body, extending demonstrations beyond tabletop arm motion." data-zh="完整复现 TWIST2 全身遥操作链路，把协调的人体运动映射到 G1 全身，使示范不再局限于桌面上肢操作。">A full-system reproduction of the TWIST2 pipeline for mapping coordinated human motion to the complete G1 body, extending demonstrations beyond tabletop arm motion.</p><ul><li data-en="Whole-body motion mapping" data-zh="全身动作映射">Whole-body motion mapping</li><li data-en="Coordinated upper and lower body" data-zh="上下肢协调控制">Coordinated upper and lower body</li><li data-en="Portable demonstration collection" data-zh="可移动的数据采集">Portable demonstration collection</li></ul></div>
+          <figure class="media-slot" data-media-key="teleopWhole">
+            <div class="media-placeholder"><div><span>PHOTO 02</span><strong data-en="Whole-body teleoperation setup" data-zh="全身遥操作系统照片">Whole-body teleoperation setup</strong></div><p><code>media/teleop-whole.webp</code><span>4:3 / 16:9 · PHOTO</span></p></div>
+            <figcaption data-en="Recommended: a wide shot showing the human operator and the G1 reproducing the same pose." data-zh="建议素材：用广角画面同时展示操作员与 G1 的对应姿态。">Recommended: a wide shot showing the human operator and the G1 reproducing the same pose.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="project-section data-section" id="data">
+      <div class="section-number">04 / DATA</div>
+      <div class="section-intro">
+        <h2 data-en="Turn demonstrations into training-ready robot data." data-zh="把示范转换成可训练的机器人数据。">Turn demonstrations into training-ready robot data.</h2>
+        <p data-en="Data from both teleoperation systems is synchronized, cleaned, and converted into LeRobot-compatible representations so policy training is independent of the original collection interface." data-zh="两套遥操作产生的数据经过同步、清洗，并转换为兼容 LeRobot 的表示，让策略训练不再依赖原始采集接口。">Data from both teleoperation systems is synchronized, cleaned, and converted into LeRobot-compatible representations so policy training is independent of the original collection interface.</p>
+      </div>
+
+      <div class="dataset-layout">
+        <div class="dataset-schema">
+          <div><span>OBSERVATION</span><strong>RGB 640 × 480</strong><small>AV1 · 30 FPS</small></div>
+          <div><span>STATE</span><strong>26-D</strong><small>ARMS · WRISTS · HANDS</small></div>
+          <div><span>ACTION</span><strong>26-D</strong><small>FLOAT32 COMMANDS</small></div>
+          <div><span>STORAGE</span><strong>LeRobot v2.1</strong><small>PARQUET · MP4 · JSONL</small></div>
+        </div>
+        <div class="dataset-copy"><h3 data-en="Public dataset snapshot" data-zh="公开数据快照">Public dataset snapshot</h3><p data-en="The current public repository contains 100 episodes and 100 synchronized camera videos—35,965 frames in total—recorded for the task “Pick up the yellow bottle on the table.”" data-zh="当前公开仓库包含 100 个 episode 和 100 段同步相机视频，共 35,965 帧，对应任务为“拿起桌上的黄色瓶子”。">The current public repository contains 100 episodes and 100 synchronized camera videos—35,965 frames in total—recorded for the task “Pick up the yellow bottle on the table.”</p><a href="https://github.com/YifanTian07/G1-policy-train" target="_blank" rel="noreferrer" data-en="Inspect the dataset repository ↗" data-zh="查看数据仓库 ↗">Inspect the dataset repository ↗</a></div>
+      </div>
+    </section>
+
+    <section class="project-section learning-section" id="learning">
+      <div class="section-number">05 / POLICY LEARNING</div>
+      <div class="section-intro">
+        <h2 data-en="Fine-tune π0.5 for the G1 action space." data-zh="面向 G1 动作空间微调 π0.5。">Fine-tune π0.5 for the G1 action space.</h2>
+        <p data-en="The standardized demonstrations are used with the unitree_lerobot training stack to train a π0.5 policy through imitation learning." data-zh="标准化示范数据进入 unitree_lerobot 训练栈，通过模仿学习训练 π0.5 策略。">The standardized demonstrations are used with the unitree_lerobot training stack to train a π0.5 policy through imitation learning.</p>
+      </div>
+
+      <div class="learning-flow">
+        <article><span>INPUT</span><h3 data-en="Vision + language + robot state" data-zh="视觉 + 语言 + 机器人状态">Vision + language + robot state</h3><p data-en="Camera observations, task instruction, and the robot's proprioceptive state form the policy context." data-zh="相机观测、任务指令与机器人本体状态共同构成策略上下文。">Camera observations, task instruction, and the robot's proprioceptive state form the policy context.</p></article>
+        <div class="model-core"><span>POLICY</span><strong>π<sub>0.5</sub></strong><small>IMITATION LEARNING</small></div>
+        <article><span>OUTPUT</span><h3 data-en="G1 manipulation actions" data-zh="G1 操作动作">G1 manipulation actions</h3><p data-en="The trained policy predicts action commands aligned with the converted G1 state-action representation." data-zh="训练后的策略预测与 G1 状态—动作表示对齐的控制指令。">The trained policy predicts action commands aligned with the converted G1 state-action representation.</p></article>
+      </div>
+    </section>
+
+    <section class="project-section validation-section" id="validation">
+      <div class="section-number">06 / VALIDATION</div>
+      <div class="section-intro section-intro-wide">
+        <h2 data-en="Verify in simulation. Then earn the right to move hardware." data-zh="先在仿真中验证，再获得驱动真机的资格。">Verify in simulation. Then earn the right to move hardware.</h2>
+        <p data-en="Validation is staged: policy inference and interfaces are checked in Isaac Sim before the same learned behavior is deployed to the physical G1 for real-world evaluation." data-zh="验证采用分阶段方式：先在 Isaac Sim 中检查策略推理和接口，再把同一学习行为部署到实体 G1 进行真实环境评估。">Validation is staged: policy inference and interfaces are checked in Isaac Sim before the same learned behavior is deployed to the physical G1 for real-world evaluation.</p>
+      </div>
+
+      <div class="validation-block">
+        <div class="validation-copy"><span>STAGE 01 / SIMULATION</span><h3>Isaac Sim</h3><p data-en="Check observation pipelines, action mapping, timing, task rollout, and obvious failure modes without exposing the physical robot to the first iteration of a policy." data-zh="检查观测链路、动作映射、时序、任务 rollout 与明显失效模式，避免让实体机器人承担策略首次迭代的风险。">Check observation pipelines, action mapping, timing, task rollout, and obvious failure modes without exposing the physical robot to the first iteration of a policy.</p></div>
+        <div class="validation-media-grid">
+          <figure class="media-slot" data-media-key="isaacImage"><div class="media-placeholder"><div><span>IMAGE 03</span><strong data-en="Isaac Sim validation frame" data-zh="Isaac Sim 验证截图">Isaac Sim validation frame</strong></div><p><code>media/isaac-sim.webp</code><span>16:9 · IMAGE</span></p></div><figcaption data-en="Recommended: a clear frame showing the G1, task scene, and camera view." data-zh="建议素材：清楚展示 G1、任务场景与相机视角。">Recommended: a clear frame showing the G1, task scene, and camera view.</figcaption></figure>
+          <figure class="media-slot" data-media-key="isaacVideo"><div class="media-placeholder"><div><span>VIDEO 04</span><strong data-en="Isaac Sim policy rollout" data-zh="Isaac Sim 策略 rollout">Isaac Sim policy rollout</strong></div><p><code>media/isaac-sim-rollout.mp4</code><span>16:9 · VIDEO</span></p></div><figcaption data-en="Recommended: a 10–30 second rollout with one complete attempt." data-zh="建议素材：10–30 秒，展示一次完整任务尝试。">Recommended: a 10–30 second rollout with one complete attempt.</figcaption></figure>
+        </div>
+      </div>
+
+      <div class="validation-block real-block">
+        <div class="validation-copy"><span>STAGE 02 / REAL ROBOT</span><h3 data-en="Physical G1 deployment" data-zh="G1 真机部署">Physical G1 deployment</h3><p data-en="Deploy the trained model to the physical G1, run closed-loop inference with live observations, and evaluate whether the learned behavior survives the sim-to-real gap." data-zh="把训练模型部署到实体 G1，使用实时观测进行闭环推理，并评估学习行为能否跨越仿真到现实的差距。">Deploy the trained model to the physical G1, run closed-loop inference with live observations, and evaluate whether the learned behavior survives the sim-to-real gap.</p></div>
+        <figure class="media-slot media-slot-wide" data-media-key="realRobot"><div class="media-placeholder"><div><span>VIDEO 05</span><strong data-en="Real-world G1 policy execution" data-zh="G1 真机策略执行视频">Real-world G1 policy execution</strong></div><p><code>media/g1-real-robot.mp4</code><span>16:9 · VIDEO</span></p></div><figcaption data-en="Recommended: one uncut attempt plus a shorter highlight clip if available." data-zh="建议素材：一次未经剪辑的完整尝试；如有条件，可再提供一段短高光视频。">Recommended: one uncut attempt plus a shorter highlight clip if available.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="project-section media-guide" id="media-guide">
+      <div class="section-number">07 / ADD YOUR MEDIA</div>
+      <div class="section-intro">
+        <h2 data-en="Six slots are ready for the real evidence." data-zh="六个位置已经为真实实验素材留好。">Six slots are ready for the real evidence.</h2>
+        <p data-en="No page layout needs to be rewritten. Add the files, update one manifest, and the placeholders turn into responsive images or videos." data-zh="不需要重写页面结构。添加文件并修改一个清单，留白就会自动变成响应式图片或视频。">No page layout needs to be rewritten. Add the files, update one manifest, and the placeholders turn into responsive images or videos.</p>
+      </div>
+      <ol class="guide-steps">
+        <li><span>01</span><div><h3 data-en="Prepare web media" data-zh="准备网页素材">Prepare web media</h3><p data-en="Use WebP or JPEG for images and H.264 MP4 for videos. Keep each video reasonably short and compressed." data-zh="图片使用 WebP 或 JPEG，视频使用 H.264 MP4。视频尽量简短并完成压缩。">Use WebP or JPEG for images and H.264 MP4 for videos. Keep each video reasonably short and compressed.</p></div></li>
+        <li><span>02</span><div><h3 data-en="Copy files into the media folder" data-zh="复制到媒体目录">Copy files into the media folder</h3><p><code>projects/g1/media/</code></p></div></li>
+        <li><span>03</span><div><h3 data-en="Fill in the file paths" data-zh="填写文件路径">Fill in the file paths</h3><p data-en="Open media-manifest.js and set src for each slot. Refresh the page to verify." data-zh="打开 media-manifest.js，为对应槽位填写 src，然后刷新页面验证。">Open media-manifest.js and set src for each slot. Refresh the page to verify.</p></div></li>
+      </ol>
+      <a class="guide-link" href="ADDING_MEDIA.md" data-en="Open the complete media guide ↗" data-zh="打开完整媒体添加指南 ↗">Open the complete media guide ↗</a>
+    </section>
+
+    <section class="project-section references">
+      <div class="section-number">08 / CODE & REFERENCES</div>
+      <div class="reference-list">
+        <a href="https://github.com/YifanTian07/G1-policy-train" target="_blank" rel="noreferrer"><span>PROJECT</span><strong>YifanTian07 / G1-policy-train</strong><small data-en="Public dataset snapshot and project repository" data-zh="公开数据快照与项目仓库">Public dataset snapshot and project repository</small></a>
+        <a href="https://github.com/unitreerobotics/unitree_lerobot" target="_blank" rel="noreferrer"><span>TRAINING</span><strong>unitree_lerobot</strong><small data-en="Data conversion, π0.5 training, simulation and deployment tools" data-zh="数据转换、π0.5 训练、仿真与部署工具">Data conversion, π0.5 training, simulation and deployment tools</small></a>
+        <a href="https://arxiv.org/abs/2511.02832" target="_blank" rel="noreferrer"><span>TELEOP</span><strong>TWIST2</strong><small data-en="Whole-body humanoid teleoperation and data collection" data-zh="全身人形机器人遥操作与数据采集">Whole-body humanoid teleoperation and data collection</small></a>
+        <a href="https://arxiv.org/abs/2504.16054" target="_blank" rel="noreferrer"><span>POLICY</span><strong>π0.5</strong><small data-en="Vision-language-action model with open-world generalization" data-zh="面向开放世界泛化的视觉—语言—动作模型">Vision-language-action model with open-world generalization</small></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="project-footer">
+    <div><strong>UNITREE G1 / 2026</strong><span data-en="An ongoing project by Yifan Tian." data-zh="Yifan Tian 持续进行中的项目。">An ongoing project by Yifan Tian.</span></div>
+    <a href="../../index.html#work" data-en="Back to all projects ↑" data-zh="返回全部项目 ↑">Back to all projects ↑</a>
+  </footer>
+</body>
+</html>
