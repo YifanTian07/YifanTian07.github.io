@@ -29,6 +29,24 @@ direct access to all celestial labels. There are no bottom navigation buttons.
 
 ## Original implementation sequence
 
+### Persistent backgrounds and category themes
+
+`galaxy-environment.js` provides scenery shared by the overview and every detail
+scene: a nebula band, two star-depth layers, stellar dust, a ringed gas planet,
+an orbiting moon and a distant rocky world. The three layers respond to view
+rotation at different strengths. Background objects are excluded from hit testing.
+Autonomous movement respects pause/reduced-motion settings and tab visibility.
+
+Each category supplies its environment hue: about uses teal, research uses blue,
+papers uses violet and projects uses amber. Nebulae, dust, stars and distant worlds
+blend toward this tint; overview restores the mixed deep-blue environment. Content
+planets keep their individual identity colors. The scenery persists across entries
+instead of allocating new textures on every navigation.
+
+Verification includes background-only pixel comparisons while paused and after
+horizontal/vertical key input, autonomous motion, all four theme mappings, return
+to overview, and a mobile paper-scene screenshot.
+
 1. Add a progressive-enhancement spatial navigation layer over the existing semantic document.
 2. Render deterministic 3D point clouds on Canvas, with perspective, depth and restrained animation.
 3. Add category navigation and CSS 3D detail cards; reuse translated document content.

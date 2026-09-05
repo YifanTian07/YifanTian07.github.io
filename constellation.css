@@ -1,4 +1,4 @@
-.universe {position:fixed;inset:0;z-index:12;overflow:hidden;background:radial-gradient(ellipse at 33% 43%,#0a2738 0%,#061724 42%,#030b16 100%);color:#d9edf6;touch-action:none;cursor:grab;font-family:"Segoe UI",Arial,sans-serif;}
+.universe {position:fixed;inset:0;z-index:12;overflow:hidden;background:radial-gradient(ellipse at 33% 43%,color-mix(in srgb,var(--space-hue,#0a2738) 45%,#061724) 0%,color-mix(in srgb,var(--space-hue,#0a2738) 16%,#061724) 42%,#030b16 100%);color:#d9edf6;touch-action:none;cursor:grab;font-family:"Segoe UI",Arial,sans-serif;}
 .universe[hidden]{display:none}.universe.is-dragging{cursor:grabbing}
 .spatial-mode{overflow:hidden;background:#030b16}.spatial-mode #main,.spatial-mode .site-footer{display:none}
 .universe canvas{position:absolute;inset:0;width:100%;height:100%;outline:none}

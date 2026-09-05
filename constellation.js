@@ -22,7 +22,7 @@
   let dragDistance=0,pinch=0;const pointers=new Map();
   const note=ui.querySelector('.planet-note');
   try {
-    const module=await import('./galaxy-engine.js?v=20260905b');palettes=module.palettes;ui.hidden=false;
+    const module=await import('./galaxy-engine.js?v=20260905c');palettes=module.palettes;ui.hidden=false;
     engine=new module.GalaxyEngine(ui,positionLabels,()=>reading('#about'));
   } catch(error) {
     console.warn('3D navigation unavailable; using the reading view.',error.message);
@@ -54,9 +54,11 @@
   function build() {
     note.hidden=true;selected=-1;labels=[];
     ui.dataset.level=detail?'planets':'galaxies';
+    ui.dataset.group=detail?groups[group].id:'overview';
+    ui.style.setProperty('--space-hue',detail?palettes[group].secondary:'#0a2738');
     ui.querySelector('.space-labels').replaceChildren();
     entries=detail?contents():groups.map((g,i)=>({title:title(g),palette:palettes[i]}));
-    engine.setBodies(entries,detail);
+    engine.setBodies(entries,detail,detail?palettes[group]:null);
     entries.forEach((entry,i)=>{
       const label=make('button','','celestial-label');label.dataset.index=i;
       label.style.setProperty('--star-color',entry.palette.color);

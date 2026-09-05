@@ -1,4 +1,5 @@
 import * as THREE from './assets/vendor/three/three.module.min.js';
+import { GalaxyEnvironment } from './galaxy-environment.js';
 
 const vertex = `attribute float aSize; attribute float aPhase; varying float vPhase;
 void main(){ vPhase=aPhase; vec4 mv=modelViewMatrix*vec4(position,1.); gl_Position=projectionMatrix*mv; gl_PointSize=clamp(aSize*240./-mv.z,1.,58.); }`;
@@ -51,9 +52,7 @@ export class GalaxyEngine {
     const mat=new THREE.ShaderMaterial({vertexShader:vertex,fragmentShader:fragment,uniforms:{color:{value:new THREE.Color(color)},time:{value:0},opacity:{value:opacity}},transparent:true,depthWrite:false,blending:THREE.AdditiveBlending});return new THREE.Points(geo,mat);
   }
   makeBackground() {
-    this.seed=2407;const p=[],s=[],f=[];
-    for(let i=0;i<1500;i++){p.push((this.random()-.5)*100,(this.random()-.5)*80,-15-this.random()*70);s.push(.035+this.random()*.09);f.push(this.random()*6.28);}
-    this.background=this.points(p,s,f,'#92bfdf',.65);this.scene.add(this.background);
+    this.environment=new GalaxyEnvironment(this.scene,(...args)=>this.points(...args),this.glowTexture);
   }
   cluster(index) {
     this.seed=2026+index*301;const group=new THREE.Group(),p=[],s=[],f=[];
@@ -114,8 +113,9 @@ export class GalaxyEngine {
     for(const body of this.bodies){body.object.traverse(node=>{node.geometry?.dispose();if(node.material){if(node.material.map!==this.glowTexture)node.material.map?.dispose();node.material.dispose();}});this.world.remove(body.object);}
     this.bodies=[];
   }
-  setBodies(entries,detail=false) {
+  setBodies(entries,detail=false,theme=null) {
     this.clear();this.detail=detail;
+    this.environment.setTheme(theme);
     const positions=detail?[[0,.5,7],[-5.8,3.2,2.8],[5.8,-2.7,2],[1.8,-5.7,-3]]:[[0,.2,7],[-6.5,3.2,.7],[6.1,3.1,-1],[3,-5.2,1.5]];
     entries.forEach((entry,index)=>{
       const object=detail?this.planet(index,entry.theme,entry.palette):this.cluster(index);
@@ -130,7 +130,7 @@ export class GalaxyEngine {
     this.rotation.premultiply(q).normalize();
   }
   focus(index) {const body=this.bodies[index];if(body)this.rotation.setFromUnitVectors(body.position.clone().normalize(),new THREE.Vector3(0,0,1));}
-  resize() {this.width=this.host.clientWidth;this.height=this.host.clientHeight;this.renderer.setSize(this.width,this.height);this.camera.aspect=this.width/this.height;this.camera.updateProjectionMatrix();}
+  resize() {this.width=this.host.clientWidth;this.height=this.host.clientHeight;this.renderer.setSize(this.width,this.height);this.camera.aspect=this.width/this.height;this.camera.updateProjectionMatrix();this.environment.resize(this.camera.aspect);}
   start() {if(this.running)return;this.running=true;this.previous=performance.now();this.frame=requestAnimationFrame(t=>this.tick(t));}
   stop() {this.running=false;cancelAnimationFrame(this.frame);}
   tick(now) {
@@ -139,7 +139,7 @@ export class GalaxyEngine {
     const ease=this.motion?1-Math.exp(-dt*9):1;
     this.world.quaternion.slerp(this.rotation,ease);this.camera.position.z+=(this.zoom-this.camera.position.z)*ease;
     if(this.motion)this.time+=dt;
-    this.background.material.uniforms.time.value=this.time;
+    this.environment.update(dt,this.time,this.world.quaternion,this.detail,this.motion);
     for(const b of this.bodies){
       if(!this.detail&&this.motion)b.object.rotation.y+=dt*.045;
       if(this.detail){const sphere=b.object.userData.sphere;sphere.quaternion.copy(this.world.quaternion).invert();sphere.rotateY(this.time*.035);}
