@@ -29,6 +29,27 @@ direct access to all celestial labels. There are no bottom navigation buttons.
 
 ## Original implementation sequence
 
+### First-paint startup correction
+
+The previous progressive enhancement deliberately displayed the Ocean Glass
+reading page until the WebGL download finished, causing a light-blue flash on
+direct visits. A small inline startup gate now establishes the night-sky background
+before external CSS or deferred JavaScript loads. It is released by the renderer's
+first completed frame, not by module download or an arbitrary animation delay.
+The spatial header also skips the old light-to-transparent background transition,
+so its first visible frame does not contain a pale navigation bar.
+
+The startup gate is enabled only with JavaScript and for the default spatial route.
+Explicit section links and JavaScript-disabled visits keep the reading page.
+Failed entry/module downloads or unavailable WebGL recover to readable content;
+a 12-second watchdog handles stalled requests, and late modules cannot replace
+that fallback. The fallback also stops any partially initialized render loop.
+
+`tests/startup-qa.cjs` reproduces the original visible light-blue first paint by
+holding the entry-script response. It checks desktop and mobile startup frames,
+renderer readiness, reading-mode round trips, failure/timeout recovery, late
+responses, no-JavaScript content, and direct section links.
+
 ### 360-degree background correction
 
 The finite nebula planes and fractional identity-to-view quaternion interpolation

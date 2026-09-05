@@ -1,4 +1,4 @@
-// The semantic homepage remains visible until WebGL is ready.
+// Reveal the spatial homepage only after its first rendered frame.
 (async () => {
   'use strict';
   const root=document.documentElement;
@@ -21,12 +21,15 @@
   let active=true,detail=false,group=0,selected=-1,labels=[],entries=[],gesture=null,lastTap=null;
   let dragDistance=0,pinch=0;const pointers=new Map();
   const note=ui.querySelector('.planet-note');
+  window.addEventListener('space-boot-fallback',()=>{active=false;engine?.stop();ui.remove();returnButton.remove();},{once:true});
   try {
-    const module=await import('./galaxy-engine.js?v=20260905e');palettes=module.palettes;ui.hidden=false;
+    const module=await import('./galaxy-engine.js?v=20260905e');
+    if(root.dataset.spaceBoot==='fallback'){ui.remove();returnButton.remove();return;}
+    palettes=module.palettes;ui.hidden=false;
     engine=new module.GalaxyEngine(ui,positionLabels,()=>reading('#about'));
   } catch(error) {
     console.warn('3D navigation unavailable; using the reading view.',error.message);
-    ui.remove();returnButton.remove();return;
+    window.spaceBoot?.finish('fallback');ui.remove();returnButton.remove();return;
   }
   function contents() {
     if(group===0)return [
@@ -91,6 +94,8 @@
       label.style.opacity=p.visible?String(Math.max(.35,Math.min(1,.65+p.depth*.045))):'0';
       label.style.visibility=p.visible?'visible':'hidden';label.style.zIndex=String(Math.round(p.depth+12));
     });
+    // GalaxyEngine invokes this callback after renderer.render(), not on download.
+    window.spaceBoot?.finish('ready');
     if(detail&&selected>=0&&!note.hidden){
       const p=bodies[selected].screen;
       if(engine.width<700){note.style.left='18px';note.style.top='auto';note.style.bottom='20px';}
@@ -100,6 +105,7 @@
     }
   }
   function reading(hash='#about') {
+    window.spaceBoot?.finish('fallback');
     active=false;engine?.stop();ui.hidden=true;document.body.classList.remove('spatial-mode');returnButton.hidden=false;
     document.querySelectorAll('.reveal').forEach(n=>n.classList.add('visible'));
     const target=document.querySelector(hash);target?.scrollIntoView({behavior:'instant'});if(target){target.tabIndex=-1;target.focus({preventScroll:true});}
@@ -165,4 +171,7 @@
   document.addEventListener('visibilitychange',()=>{if(document.hidden)engine.stop();else if(active)engine.start();});
   build();enter();
   if(location.hash&&location.hash!=='#top'&&location.hash!=='#main')reading(location.hash);
-})();
+})().catch(error=>{
+  window.spaceBoot?.finish('fallback');
+  console.warn('3D startup failed; using the reading view.',error.message);
+});

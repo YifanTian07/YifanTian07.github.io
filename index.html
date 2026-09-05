@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Yifan Tian — HKUST(GZ) undergraduate researcher working on embodied AI, computer vision, and AI for healthcare.">
   <meta name="author" content="Yifan Tian">
-  <meta name="theme-color" content="#e2f7ff">
+  <meta name="theme-color" content="#030b16">
   <meta property="og:title" content="Yifan Tian — Researcher & Builder">
   <meta property="og:description" content="Perception and manipulation for embodied AI, computer vision, and AI for healthcare.">
   <meta property="og:type" content="website">
@@ -13,9 +13,45 @@
   <title>Yifan Tian — Researcher & Builder</title>
   <link rel="canonical" href="https://yifantian07.github.io/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    /* Critical first-paint styles: do not wait for any external stylesheet. */
+    #space-boot { display:none; }
+    html[data-space-boot="pending"], html[data-space-boot="pending"] body { background:#030b16!important; overflow:hidden; }
+    html[data-space-boot="pending"] body > :not(#space-boot) { opacity:0!important; visibility:hidden!important; pointer-events:none!important; }
+    html[data-space-boot="pending"] #space-boot { display:grid; position:fixed; inset:0; place-content:center; justify-items:center; gap:20px; background:radial-gradient(ellipse at 33% 43%,#08202d, #030b16 70%); color:#8baebd; font:10px "Segoe UI",Arial,sans-serif; letter-spacing:.14em; }
+    #space-boot::before { content:""; width:4px; height:4px; border-radius:50%; background:#dcfff7; box-shadow:0 0 18px 5px #5ff5d477; }
+    #space-boot [lang="zh"], html[lang^="zh"] #space-boot [lang="en"] { display:none; }
+    html[lang^="zh"] #space-boot [lang="zh"] { display:inline; }
+  </style>
+  <script>
+    (() => {
+      // Explicit section links still open the semantic reading view directly.
+      if (location.hash && !['#top', '#main'].includes(location.hash)) return;
+      const root = document.documentElement;
+      root.dataset.spaceBoot = 'pending';
+      try { root.lang = (localStorage.getItem('language') || navigator.language).startsWith('zh') ? 'zh' : 'en'; } catch (_) {}
+      let timer;
+      const finish = state => {
+        if (root.dataset.spaceBoot !== 'pending') return;
+        clearTimeout(timer);
+        root.dataset.spaceBoot = state;
+        document.getElementById('space-boot')?.remove();
+        if (state === 'fallback') {
+          document.body?.classList.remove('spatial-mode');
+          document.querySelector('.universe')?.setAttribute('hidden', '');
+          document.querySelectorAll('.reveal').forEach(node => node.classList.add('visible'));
+          window.dispatchEvent(new Event('space-boot-fallback'));
+        }
+      };
+      window.spaceBoot = { finish };
+      // A failed or stalled entry script must never leave the page blank.
+      timer = setTimeout(() => finish('fallback'), 12000);
+    })();
+  </script>
+  <noscript><style>.reveal { opacity:1!important; transform:none!important; }</style></noscript>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="ocean-glass.css">
-  <link rel="stylesheet" href="constellation.css?v=20260905c">
+  <link rel="stylesheet" href="constellation.css?v=20260905f">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,6 +69,7 @@
   </script>
 </head>
 <body>
+  <div id="space-boot" role="status" aria-live="polite"><span lang="en">Loading the stars</span><span lang="zh">正在载入星空</span></div>
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Skip to content</a>
 
   <header class="site-header" data-header>
@@ -294,6 +331,6 @@
 
   <div class="toast" data-toast role="status" aria-live="polite" data-i18n="contact.toast">Email copied to clipboard</div>
   <script src="script.js" defer></script>
-  <script src="constellation.js?v=20260905e" defer></script>
+  <script src="constellation.js?v=20260905f" defer onerror="window.spaceBoot?.finish('fallback')"></script>
 </body>
 </html>

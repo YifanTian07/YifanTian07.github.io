@@ -3,7 +3,7 @@
 .spatial-mode{overflow:hidden;background:#030b16}.spatial-mode #main,.spatial-mode .site-footer{display:none}
 .universe canvas{position:absolute;inset:0;width:100%;height:100%;outline:none}
 .galaxy-wash{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 72% 35%,rgba(107,74,172,.07),transparent 45%),radial-gradient(ellipse at 25% 90%,rgba(0,156,148,.05),transparent 55%)}
-.spatial-mode .site-header{background:transparent!important;border:0!important;color:#b3d3e4;backdrop-filter:none;z-index:30;pointer-events:none}
+.spatial-mode .site-header{background:transparent!important;border:0!important;color:#b3d3e4;backdrop-filter:none;z-index:30;pointer-events:none;transition:none}
 .spatial-mode .site-header a,.spatial-mode .site-header button,.spatial-mode .site-header nav{pointer-events:auto}
 .spatial-mode .desktop-nav a,.spatial-mode .contact-link,.spatial-mode .language-button,.spatial-mode .icon-button,.spatial-mode .menu-button{color:#b6d3e4!important;background:transparent!important;border-color:rgba(147,199,224,.16)!important}
 .spatial-mode .brand-mark{background:transparent;color:#b6efef;border:1px solid #33535c;box-shadow:none;border-radius:50%;font-weight:400}
