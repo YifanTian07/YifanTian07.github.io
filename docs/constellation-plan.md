@@ -29,7 +29,26 @@ direct access to all celestial labels. There are no bottom navigation buttons.
 
 ## Original implementation sequence
 
-### Persistent backgrounds and category themes
+### 360-degree background correction
+
+The finite nebula planes and fractional identity-to-view quaternion interpolation
+were replaced. A one-degree yaw step across 180 degrees previously produced a
+43.08-degree background jump. The sky now integrates complete orientation deltas,
+rebasing its input when a category changes without resetting its accumulated pose.
+
+The nebula is a radius-180 enclosing sphere with a continuous 3D procedural shader.
+Stars cover complete spherical shells, and the galactic dust follows a closed great
+circle. There are 69,800 stars and bright points in the background. The camera far
+plane is 300, beyond the sky even at maximum zoom distance. No rectangular sky
+texture, planar boundary, UV seam or fractional-rotation branch remains.
+
+Regression evidence: three complete turns about horizontal, vertical and diagonal
+axes each have a maximum one-degree output step for one-degree input. All 256
+sampled ray directions hit the sky from the maximum camera offset. Category entry
+preserves the sky orientation. Forward, reverse and polar views are captured for
+visual review; pause, category tints, mobile layout and frame cadence are checked.
+
+### Persistent backgrounds and category themes (original design)
 
 `galaxy-environment.js` provides scenery shared by the overview and every detail
 scene: a nebula band, two star-depth layers, stellar dust, a ringed gas planet,

@@ -1,5 +1,5 @@
 import * as THREE from './assets/vendor/three/three.module.min.js';
-import { GalaxyEnvironment } from './galaxy-environment.js?v=20260905d';
+import { GalaxyEnvironment } from './galaxy-environment.js?v=20260905e';
 
 const vertex = `attribute float aSize; attribute float aPhase; varying float vPhase;
 void main(){ vPhase=aPhase; vec4 mv=modelViewMatrix*vec4(position,1.); gl_Position=projectionMatrix*mv; gl_PointSize=clamp(aSize*240./-mv.z,1.,58.); }`;
@@ -27,7 +27,7 @@ export class GalaxyEngine {
     this.renderer.domElement.setAttribute('aria-hidden','true');
     this.renderer.domElement.addEventListener('webglcontextlost', event=>{event.preventDefault();this.stop();onLost();});
     this.scene=new THREE.Scene();
-    this.camera=new THREE.PerspectiveCamera(43,1,.1,150);
+    this.camera=new THREE.PerspectiveCamera(43,1,.1,300);
     this.camera.position.z=23;
     this.world=new THREE.Group();this.scene.add(this.world);
     this.rotation=new THREE.Quaternion();this.zoom=23;this.time=0;this.previous=0;this.running=false;
@@ -123,6 +123,7 @@ export class GalaxyEngine {
       this.bodies.push({object,position,entry,screen:{}});
     });
     this.rotation.identity();this.world.quaternion.identity();this.zoom=this.host.clientWidth<700?28:23;
+    this.environment.rebaseOrientation(this.world.quaternion);
     this.camera.position.z=this.zoom+(this.motion?5:0);this.resize();
   }
   rotate(dx,dy) {
