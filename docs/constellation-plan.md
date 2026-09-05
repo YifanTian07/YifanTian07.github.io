@@ -9,7 +9,25 @@
 - Update student year to Year 2 / 大二; retain cohort 2025.
 - Plan the change before implementation.
 
-## Implementation sequence
+## Revised interaction and modeling — 2026-09-05
+
+The user requested a second visual pass: fluorescent galaxies without connecting
+lines, full-screen movement in both axes, no bottom controls, upward flick to exit,
+and individually themed planets with color-matched descriptions.
+
+The active scene now uses a locally hosted Three.js WebGL renderer. `galaxy-engine.js`
+owns particle galaxies, procedural sphere textures, atmosphere, lighting, camera
+rotation and projection. `constellation.js` owns translated content and interaction.
+The old Canvas projection and card carousel have been replaced.
+
+Gestures: drag in either axis to orbit; wheel/trackpad moves the view on both axes;
+pinch or Ctrl+wheel changes distance. Double-click a galaxy to enter. Click a planet
+for its colored note. A mostly vertical upward flick over 110 px within 420 ms exits
+the group; slower vertical drags continue orbiting. Escape is the keyboard equivalent.
+The note itself scrolls normally. Arrow keys rotate the view; Tab and Enter provide
+direct access to all celestial labels. There are no bottom navigation buttons.
+
+## Original implementation sequence
 
 1. Add a progressive-enhancement spatial navigation layer over the existing semantic document.
 2. Render deterministic 3D point clouds on Canvas, with perspective, depth and restrained animation.
