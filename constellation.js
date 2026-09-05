@@ -22,7 +22,7 @@
   let dragDistance=0,pinch=0;const pointers=new Map();
   const note=ui.querySelector('.planet-note');
   try {
-    const module=await import('./galaxy-engine.js?v=20260905c');palettes=module.palettes;ui.hidden=false;
+    const module=await import('./galaxy-engine.js?v=20260905d');palettes=module.palettes;ui.hidden=false;
     engine=new module.GalaxyEngine(ui,positionLabels,()=>reading('#about'));
   } catch(error) {
     console.warn('3D navigation unavailable; using the reading view.',error.message);

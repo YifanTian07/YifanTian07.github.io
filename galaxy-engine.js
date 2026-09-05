@@ -1,5 +1,5 @@
 import * as THREE from './assets/vendor/three/three.module.min.js';
-import { GalaxyEnvironment } from './galaxy-environment.js';
+import { GalaxyEnvironment } from './galaxy-environment.js?v=20260905d';
 
 const vertex = `attribute float aSize; attribute float aPhase; varying float vPhase;
 void main(){ vPhase=aPhase; vec4 mv=modelViewMatrix*vec4(position,1.); gl_Position=projectionMatrix*mv; gl_PointSize=clamp(aSize*240./-mv.z,1.,58.); }`;
